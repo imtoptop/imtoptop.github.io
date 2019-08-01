@@ -100,16 +100,22 @@
   };
 </script>
 
-  <meta name="description" content="为初学者准备的大数据入门专栏。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大数据专栏">
-<meta property="og:url" content="https://bigdatapro.zranfly.top/index.html">
+  <meta name="description" content="大数据专栏 | HDFS详解（理论知识）    HDFS 工作机制 工作机制的学习主要是为加深对分布式系统的理解，以及增强遇到各种问题时的分析解决能力，形成一定的集群运维能力） 很多不是真正理解hadoop技术体系的人会常常觉得HDFS可用于网盘类应用，但实际并非如此。要想将技术准确用在恰当的地方，必须对技术有深刻的理解  概述： HDFS集群分为两大角色：NameNode、DataNode  N">
+<meta name="keywords" content="Hadoop,HDFS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.大数据专栏 | HDFS详解 (理论知识)">
+<meta property="og:url" content="https://bigdatapro.zranfly.top/hadoop/hdfs/fdb7207.html">
 <meta property="og:site_name" content="大数据专栏">
-<meta property="og:description" content="为初学者准备的大数据入门专栏。">
+<meta property="og:description" content="大数据专栏 | HDFS详解（理论知识）    HDFS 工作机制 工作机制的学习主要是为加深对分布式系统的理解，以及增强遇到各种问题时的分析解决能力，形成一定的集群运维能力） 很多不是真正理解hadoop技术体系的人会常常觉得HDFS可用于网盘类应用，但实际并非如此。要想将技术准确用在恰当的地方，必须对技术有深刻的理解  概述： HDFS集群分为两大角色：NameNode、DataNode  N">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801105059.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801105233.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801110001.png">
+<meta property="og:updated_time" content="2019-08-01T03:07:29.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大数据专栏">
-<meta name="twitter:description" content="为初学者准备的大数据入门专栏。">
+<meta name="twitter:title" content="6.大数据专栏 | HDFS详解 (理论知识)">
+<meta name="twitter:description" content="大数据专栏 | HDFS详解（理论知识）    HDFS 工作机制 工作机制的学习主要是为加深对分布式系统的理解，以及增强遇到各种问题时的分析解决能力，形成一定的集群运维能力） 很多不是真正理解hadoop技术体系的人会常常觉得HDFS可用于网盘类应用，但实际并非如此。要想将技术准确用在恰当的地方，必须对技术有深刻的理解  概述： HDFS集群分为两大角色：NameNode、DataNode  N">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801105059.png">
 
 
 
@@ -117,7 +123,7 @@
 
   
   
-  <link rel="canonical" href="https://bigdatapro.zranfly.top/">
+  <link rel="canonical" href="https://bigdatapro.zranfly.top/hadoop/hdfs/fdb7207">
 
 
 
@@ -128,7 +134,7 @@
 </script>
 
   
-  <title>大数据专栏</title>
+  <title>6.大数据专栏 | HDFS详解 (理论知识) | 大数据专栏</title>
   
 
 
@@ -186,8 +192,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,7 +230,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -374,9 +379,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -408,10 +413,8 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hadoop/hdfs/fdb7207.html" class="post-title-link" itemprop="url">6.大数据专栏 | HDFS详解 (理论知识)</a>
+          <h2 class="post-title" itemprop="name headline">6.大数据专栏 | HDFS详解 (理论知识)
+
               
             
           </h2>
@@ -479,6 +482,14 @@
           
 
           
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
 
           
 
@@ -522,483 +533,209 @@
       
 
       
-        
-          
-            <p>
-              大数据专栏 | HDFS详解（理论知识）
+        <center><h3>大数据专栏 | HDFS详解（理论知识）</h3></center>
+<hr>
 
 
+<h3 id="HDFS-工作机制"><a href="#HDFS-工作机制" class="headerlink" title="HDFS 工作机制"></a>HDFS 工作机制</h3><blockquote>
+<p>工作机制的学习主要是为加深对分布式系统的理解，以及增强遇到各种问题时的分析解决能力，形成一定的集群运维能力）</p>
+<p>很多不是真正理解hadoop技术体系的人会常常觉得HDFS可用于网盘类应用，但实际并非如此。要想将技术准确用在恰当的地方，必须对技术有深刻的理解</p>
+</blockquote>
+<h4 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h4><ol>
+<li><p>HDFS集群分为两大角色：<strong>NameNode、DataNode</strong></p>
+</li>
+<li><p><strong>NameNode</strong>负责管理整个文件系统的元数据</p>
+</li>
+<li><p><strong>DataNode</strong> 负责管理用户的文件数据块</p>
+</li>
+<li><p>文件会按照固定的大小（blocksize）切成若干块后分布式存储在若干台<strong>datanode</strong>上</p>
+</li>
+<li><p>每一个文件块可以有多个副本，并存放在不同的<strong>datanode</strong>上</p>
+</li>
+<li><p><strong>Datanode</strong>会定期向<strong>Namenode</strong>汇报自身所保存的文件block信息，而<strong>namenode</strong>则会负责保持文件的副本数量</p>
+</li>
+<li><p>HDFS的内部工作机制对客户端保持透明，客户端请求访问HDFS都是通过向<strong>namenode</strong>申请来进行</p>
+</li>
+</ol>
+<h3 id="HDFS-写数据流程"><a href="#HDFS-写数据流程" class="headerlink" title="HDFS 写数据流程"></a>HDFS 写数据流程</h3><blockquote>
+<p>客户端要向HDFS写数据，首先要跟namenode通信以确认可以写文件并获得接收文件block的datanode，然后，客户端按顺序将文件逐个block传递给相应datanode，并由接收到block的datanode负责向其他datanode复制block的副本</p>
+</blockquote>
+<h4 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801105059.png" alt></p>
+<h4 id="流程说明"><a href="#流程说明" class="headerlink" title="流程说明"></a>流程说明</h4><p>1、根namenode通信请求上传文件，namenode检查目标文件是否已存在，父目录是否存在</p>
+<p>2、namenode返回是否可以上传</p>
+<p>3、client请求第一个 block该传输到哪些datanode服务器上</p>
+<p>4、namenode返回3个datanode服务器ABC</p>
+<p>5、client请求3台dn中的一台A上传数据（本质上是一个RPC调用，建立pipeline），A收到请求会继续调用B，然后B调用C，将真个pipeline建立完成，逐级返回客户端</p>
+<p>6、client开始往A上传第一个block（先从磁盘读取数据放到一个本地内存缓存），以packet为单位，A收到一个packet就会传给B，B传给C；A每传一个packet会放入一个应答队列等待应答</p>
+<p>7、当一个block传输完成之后，client再次请求namenode上传第二个block的服务器。</p>
+<h3 id="HDFS-读数据流程"><a href="#HDFS-读数据流程" class="headerlink" title="HDFS 读数据流程"></a>HDFS 读数据流程</h3><blockquote>
+<p>客户端将要读取的文件路径发送给namenode，namenode获取文件的元信息（主要是block的存放位置信息）返回给客户端，客户端根据返回的信息找到相应datanode逐个获取文件的block并在客户端本地进行数据追加合并从而获得整个文件</p>
+</blockquote>
+<h4 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801105233.png" alt></p>
+<h4 id="流程说明-1"><a href="#流程说明-1" class="headerlink" title="流程说明"></a>流程说明</h4><p>1、跟namenode通信查询元数据，找到文件块所在的datanode服务器</p>
+<p>2、挑选一台datanode（就近原则，然后随机）服务器，请求建立socket流</p>
+<p>3、datanode开始发送数据（从磁盘里面读取数据放入流，以packet为单位来做校验）</p>
+<p>4、客户端以packet为单位接收，现在本地缓存，然后写入目标文件</p>
+<h3 id="NameNode-工作机制"><a href="#NameNode-工作机制" class="headerlink" title="NameNode 工作机制"></a>NameNode 工作机制</h3><blockquote>
+<p><em>问题场景：</em></p>
+<p><em>1、集群启动后，可以查看文件，但是上传文件时报错，打开web页面可看到namenode正处于safemode状态，怎么处理？</em></p>
+<p><em>2、<strong>Namenode服务器的磁盘故障导致namenode宕机</strong>，<strong>如何挽救集群及数据</strong>？</em></p>
+<p><em>3、<strong>Namenode是否可以有多个</strong>？namenode内存要配置多大？namenode跟集群数据存储能力有关系吗？</em></p>
+<p><em>4、文件的blocksize究竟调大好还是调小好？</em></p>
+<p><em>……</em></p>
+<p><em>诸如此类问题的回答，都需要基于对namenode自身的工作原理的深刻理解</em></p>
+</blockquote>
+<h4 id="NameNode-职责"><a href="#NameNode-职责" class="headerlink" title="NameNode 职责"></a>NameNode 职责</h4><ul>
+<li><p>负责客户端请求的响应</p>
+</li>
+<li><p>元数据的管理（查询，修改）</p>
+</li>
+</ul>
+<h4 id="元数据管理"><a href="#元数据管理" class="headerlink" title="元数据管理"></a>元数据管理</h4><ul>
+<li>namenode对数据的管理采用了三种存储形式：</li>
+<li>内存元数据(NameSystem)</li>
+<li>磁盘元数据镜像文件</li>
+<li>数据操作日志文件（可通过日志运算出元数据）</li>
+</ul>
+<h4 id="元数据存储机制"><a href="#元数据存储机制" class="headerlink" title="元数据存储机制"></a>元数据存储机制</h4><p>内存中有一份完整的元数据(<strong>内存meta data</strong>)</p>
+<p>磁盘有一个“准完整”的元数据镜像（<strong>fsimage</strong>）文件(在namenode的工作目录中)</p>
+<p>用于衔接内存metadata和持久化元数据镜像fsimage之间的操作日志（<strong>edits文件</strong>）</p>
+<blockquote>
+<p><em>注：当客户端对hdfs中的文件进行新增或者修改操作，操作记录首先被记入edits日志文件中，当客户端操作成功后，相应的元数据会更新到内存meta.data中</em></p>
+</blockquote>
+<h4 id="元数据手动·查看"><a href="#元数据手动·查看" class="headerlink" title="元数据手动·查看"></a>元数据手动·查看</h4><p>可以通过hdfs的一个工具来查看edits中的信息</p>
+<p>bin/hdfs oev -i edits -o edits.xml</p>
+<p>bin/hdfs oiv -i fsimage_0000000000000000087 -p XML -o fsimage.xml</p>
+<h4 id="元数据的checkpoint"><a href="#元数据的checkpoint" class="headerlink" title="元数据的checkpoint"></a>元数据的checkpoint</h4><p>每隔一段时间，会由secondary namenode将namenode上积累的所有edits和一个最新的fsimage下载到本地，并加载到内存进行merge（这个过程称为checkpoint）</p>
+<h4 id="checkpoint-的详细过程"><a href="#checkpoint-的详细过程" class="headerlink" title="checkpoint 的详细过程"></a>checkpoint 的详细过程</h4><p><img src="https://raw.githubusercontent.com/zranfly/tuchuang/master/img/20190801110001.png" alt></p>
+<h4 id="checkpoint-操作的触发条件配置参数"><a href="#checkpoint-操作的触发条件配置参数" class="headerlink" title="checkpoint 操作的触发条件配置参数"></a>checkpoint 操作的触发条件配置参数</h4><p>dfs.namenode.checkpoint.check.period=60  #检查触发条件是否满足的频率，60秒</p>
+<p>dfs.namenode.checkpoint.dir=file://${hadoop.tmp.dir}/dfs/namesecondary</p>
+<p>#以上两个参数做checkpoint操作时，secondary namenode的本地工作目录</p>
+<p>dfs.namenode.checkpoint.edits.dir=${dfs.namenode.checkpoint.dir} dfs.namenode.checkpoint.max-retries=3  #最大重试次数</p>
+<p>dfs.namenode.checkpoint.period=3600  #两次checkpoint之间的时间间隔3600秒</p>
+<p>dfs.namenode.checkpoint.txns=1000000 #两次checkpoint之间最大的操作记录</p>
+<h3 id="DataNode-工作机制"><a href="#DataNode-工作机制" class="headerlink" title="DataNode 工作机制"></a>DataNode 工作机制</h3><blockquote>
+<p><em>问题场景：</em></p>
+<p><em>1、集群容量不够，怎么扩容？</em></p>
+<p><em>2、如果有一些datanode宕机，该怎么办？</em></p>
+<p><em>3、datanode明明已启动，但是集群中的可用datanode列表中就是没有，怎么办？</em></p>
+<p><em>以上这类问题的解答，有赖于对datanode工作机制的深刻理解</em></p>
+</blockquote>
+<h3 id="Datanode工作职责："><a href="#Datanode工作职责：" class="headerlink" title="Datanode工作职责："></a>Datanode工作职责：</h3><p><strong>存储管理用户的文件块数据</strong></p>
+<p>定期向namenode汇报自身所持有的block信息（通过心跳信息上报）</p>
+<p>（这点很重要，因为，当集群中发生某些block副本失效时，集群如何恢复block初始副本数量的问题）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.blockreport.intervalMsec<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>3600000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span>Determines block reporting interval in milliseconds.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-HDFS 工作机制
-工作机制的学习主要是为加深对分布式系统的理解，以及增强遇到各种问题时的分析解决能力，形成一定的集群运维能力）
-很多不是真正理解hadoop技术体系的人会常常觉得HDFS可用于网盘类应用，但实际并非如此。要想将技术准确用在恰当的地方，
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hadoop/hdfs/fdb7207.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+<p><strong>Datanode掉线判断时限参数</strong></p>
+<p>datanode进程死亡或者网络故障造成datanode无法与namenode通信，namenode不会立即把该节点判定为死亡，要经过一段时间，这段时间暂称作超时时长。HDFS默认的超时时长为10分钟+30秒。如果定义超时时间为timeout，则超时时长的计算公式为：</p>
+<p>​    timeout  = 2 * heartbeat.recheck.interval + 10 * dfs.heartbeat.interval。</p>
+<p>而默认的heartbeat.recheck.interval 大小为5分钟，dfs.heartbeat.interval默认为3秒。</p>
+<p>需要注意的是hdfs-site.xml 配置文件中的heartbeat.recheck.interval的单位为毫秒，dfs.heartbeat.interval的单位为秒。所以，举个例子，如果heartbeat.recheck.interval设置为5000（毫秒），dfs.heartbeat.interval设置为3（秒，默认），则总的超时时间为40秒。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>heartbeat.recheck.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>2000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.heartbeat.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="观察验证DATANODE功能"><a href="#观察验证DATANODE功能" class="headerlink" title="观察验证DATANODE功能"></a>观察验证DATANODE功能</h2><p>上<strong>传一个文件，观察文件的block具体的物理存放情况：</strong></p>
+<hr>
+<p><strong>在每一台datanode机器上的这个目录中能找到文件的切块：</strong></p>
+<p>/home/hadoop/app/hadoop-2.6.4/tmp/dfs/data/current/BP-193442119-192.168.2.120-1432457733977/current/finalized</p>
+
       
     </div>
 
     
 
     
+      
+    
 
     
     
     
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="大数据专栏 wechat" style="width: 200px; max-width: 100%;">
+  <div>微信扫一扫订阅大数据专栏.</div>
+</div>
 
     
 
     
       
     
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="大数据专栏 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="大数据专栏 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://bigdatapro.zranfly.top/hadoop/hdfs/a0a5b9a8.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大数据专栏">
-      <meta itemprop="description" content="为初学者准备的大数据入门专栏。">
-      <meta itemprop="image" content="https://i.loli.net/2019/07/30/5d3ff04a4632799201.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据专栏">
-    </span>
-
-    
-      <header class="post-header">
-
         
+          
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hadoop/hdfs/a0a5b9a8.html" class="post-title-link" itemprop="url">5.大数据专栏 | HDFS详解 （命令行操作）</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
+        <div class="post-tags">
           
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
           
+            <a href="/tags/HDFS/" rel="tag"># HDFS</a>
           
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-01 08:13:30 / 修改时间：10:03:06" itemprop="dateCreated datePublished" datetime="2019-08-01T08:13:30+08:00">2019-08-01</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/hdfs/" itemprop="url" rel="index"><span itemprop="name">hdfs</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">7.1k</span>
-            </span>
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">6 分钟</span>
-            </span>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-            <p>
-              大数据专栏 | HDFS详解（命令行操作）
-
-
-
-
-
-HDFS基本概念
-前言：
-
-l 设计思想
-分而治之：将大文件、大批量文件，分布式存放在大量服务器上，以便于采取分而治之的方式对海量数据进行运算分析；
-l 在大数据系统中作用：
-为各类分布式运算框架（如：mapreduce，spark，tez，……
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hadoop/hdfs/a0a5b9a8.html#more" rel="contents">
-                阅读全文 &raquo;
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hadoop/hdfs/a0a5b9a8.html" rel="next" title="5.大数据专栏 | HDFS详解 （命令行操作）">
+                <i class="fa fa-chevron-left"></i> 5.大数据专栏 | HDFS详解 （命令行操作）
               </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://bigdatapro.zranfly.top/hadoop/mapreduce/5ce6e6bd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大数据专栏">
-      <meta itemprop="description" content="为初学者准备的大数据入门专栏。">
-      <meta itemprop="image" content="https://i.loli.net/2019/07/30/5d3ff04a4632799201.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据专栏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hadoop/mapreduce/5ce6e6bd.html" class="post-title-link" itemprop="url">4.MapReduce使用</a>
-              
             
-          </h2>
-        
+          </div>
 
-        <div class="post-meta">
+          <span class="post-nav-divider"></span>
 
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-31 13:33:30 / 修改时间：13:38:44" itemprop="dateCreated datePublished" datetime="2019-07-31T13:33:30+08:00">2019-07-31</time>
-            </span>
-          
-
-          
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/mapreduce/" itemprop="url" rel="index"><span itemprop="name">mapreduce</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">2.9k</span>
-            </span>
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">3 分钟</span>
-            </span>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>
-              大数据专栏 | MapReduce的使用
-
-
-
-
-MapReduce的使用
-mapreduce是hadoop中的分布式运算编程框架，只要按照其编程规范，只需要编写少量的业务逻辑代码即可实现一个强大的海量数据并发处理程序
-
-1、需求从大量（比如T级别）文本文件中，统计出每一个单词出现的总次数
-2、ma
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hadoop/mapreduce/5ce6e6bd.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1008,639 +745,15 @@ mapreduce是hadoop中的分布式运算编程框架，只要按照其编程规�
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://bigdatapro.zranfly.top/hadoop/b2428c70.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大数据专栏">
-      <meta itemprop="description" content="为初学者准备的大数据入门专栏。">
-      <meta itemprop="image" content="https://i.loli.net/2019/07/30/5d3ff04a4632799201.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据专栏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hadoop/b2428c70.html" class="post-title-link" itemprop="url">3.Hadoop环境测试</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-31 10:00:13 / 修改时间：13:35:13" itemprop="dateCreated datePublished" datetime="2019-07-31T10:00:13+08:00">2019-07-31</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">1k</span>
-            </span>
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">1 分钟</span>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              大数据专栏 | Hadoop环境测试
-
-
-
-文件上传测试上传文件到HDFS从本地上传一个文本文件到hdfs的/wordcount/input目录下
-[hadoop@mini61 ~]$ hadoop fs -mkdir -p /wordcount/input    # 创建目录[hadoop@min
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hadoop/b2428c70.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://bigdatapro.zranfly.top/hadoop/27464cc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大数据专栏">
-      <meta itemprop="description" content="为初学者准备的大数据入门专栏。">
-      <meta itemprop="image" content="https://i.loli.net/2019/07/30/5d3ff04a4632799201.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据专栏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hadoop/27464cc.html" class="post-title-link" itemprop="url">2.Hadoop环境搭建</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-31 08:20:49 / 修改时间：15:30:40" itemprop="dateCreated datePublished" datetime="2019-07-31T08:20:49+08:00">2019-07-31</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">4.4k</span>
-            </span>
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">4 分钟</span>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              大数据专栏 | Hadoop集群环境搭建
-
-
-
-下面为简化版搭建教程
-附软件下载地址:Hadoop官网下载：https://hadoop.apache.org/releases.html
-JDK下载：https://www.oracle.com/technetwork/java/javase/dow
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hadoop/27464cc.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://bigdatapro.zranfly.top/hadoop/f868e049.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大数据专栏">
-      <meta itemprop="description" content="为初学者准备的大数据入门专栏。">
-      <meta itemprop="image" content="https://i.loli.net/2019/07/30/5d3ff04a4632799201.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据专栏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hadoop/f868e049.html" class="post-title-link" itemprop="url">1.认识Hadoop</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-30 21:47:49" itemprop="dateCreated datePublished" datetime="2019-07-30T21:47:49+08:00">2019-07-30</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-31 09:27:15" itemprop="dateModified" datetime="2019-07-31T09:27:15+08:00">2019-07-31</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span title="本文字数">1k</span>
-            </span>
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span title="阅读时长">1 分钟</span>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              大数据专栏 | 认识Hadoop
-
-
-
-
-
-
-
-
-
-Hadoop简介
-HADOOP是apache旗下的一套开源软件平台
-
-HADOOP提供的功能：利用服务器集群，根据用户的自定义业务逻辑，对海量数据进行分布式处理
-
-HADOOP的核心组件有
-
-HDFS（分布式文件系统）
-
-YARN（运算资源调度系统
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hadoop/f868e049.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -1676,8 +789,17 @@ YARN（运算资源调度系统
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1784,6 +906,23 @@ YARN（运算资源调度系统
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">大数据专栏 | HDFS详解（理论知识）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS-工作机制"><span class="nav-number">2.</span> <span class="nav-text">HDFS 工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述："><span class="nav-number">2.1.</span> <span class="nav-text">概述：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS-写数据流程"><span class="nav-number">3.</span> <span class="nav-text">HDFS 写数据流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流程图"><span class="nav-number">3.1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程说明"><span class="nav-number">3.2.</span> <span class="nav-text">流程说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS-读数据流程"><span class="nav-number">4.</span> <span class="nav-text">HDFS 读数据流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流程图-1"><span class="nav-number">4.1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程说明-1"><span class="nav-number">4.2.</span> <span class="nav-text">流程说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NameNode-工作机制"><span class="nav-number">5.</span> <span class="nav-text">NameNode 工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NameNode-职责"><span class="nav-number">5.1.</span> <span class="nav-text">NameNode 职责</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元数据管理"><span class="nav-number">5.2.</span> <span class="nav-text">元数据管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元数据存储机制"><span class="nav-number">5.3.</span> <span class="nav-text">元数据存储机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元数据手动·查看"><span class="nav-number">5.4.</span> <span class="nav-text">元数据手动·查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元数据的checkpoint"><span class="nav-number">5.5.</span> <span class="nav-text">元数据的checkpoint</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#checkpoint-的详细过程"><span class="nav-number">5.6.</span> <span class="nav-text">checkpoint 的详细过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#checkpoint-操作的触发条件配置参数"><span class="nav-number">5.7.</span> <span class="nav-text">checkpoint 操作的触发条件配置参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataNode-工作机制"><span class="nav-number">6.</span> <span class="nav-text">DataNode 工作机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Datanode工作职责："><span class="nav-number">7.</span> <span class="nav-text">Datanode工作职责：</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#观察验证DATANODE功能"><span class="nav-number"></span> <span class="nav-text">观察验证DATANODE功能</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1977,6 +1116,10 @@ YARN（运算资源调度系统
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -1990,6 +1133,8 @@ YARN（运算资源调度系统
 
   
 
+
+  
 
 
   
